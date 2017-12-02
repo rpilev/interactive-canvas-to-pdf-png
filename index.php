@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,12 +20,12 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Canvas to PDF / PNG</a>
+      <a class="navbar-brand" href="#">Canvas - PDF / PNG</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Logi sisse</a>
+            <a class="nav-link" href="login_page.php"><?php echo !isset($_SESSION['user_id']) ? 'Logi sisse' : 'Adminni ala' ?></a>
           </li>
         </ul>
       </div>

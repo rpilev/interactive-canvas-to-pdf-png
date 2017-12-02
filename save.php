@@ -39,7 +39,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-        echo "<meta http-equiv='refresh' content='0; url=success.html' />";
+        echo "<meta http-equiv='refresh' content='0; url=success.php' />";
     } else {
         echo "Tekkis viga.";
         die();
@@ -51,7 +51,7 @@ $file = $target_dir . $_FILES["img"]["name"];
 
 $stmt = $conn->prepare("INSERT INTO canvas_img (`text_value`, `textX`, `textY`, `canvas_text_size`, `img_file`) VALUES (?, ?, ?, ?, ?)");
 
-$stmt->bind_param('sddds', $_POST['canvas-textValue'], $_POST['canvas-textX'], $_POST['canvas-textY'], $_POST['canvas-canvas_text_size'], $file);   // bind $sample to the parameter
+$stmt->bind_param('sddds', $_POST['canvas-textValue'], $_POST['canvas-textX'], $_POST['canvas-textY'], $_POST['canvas-canvas_text_size'], $file);
 
 /* execute prepared statement */
 $stmt->execute();
