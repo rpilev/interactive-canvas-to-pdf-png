@@ -3,7 +3,9 @@
 include_once('./database.php');
 
 $target_dir = "img/";
-$target_file = $target_dir . basename($_FILES["img"]["name"]);
+$path_parts = pathinfo($_FILES["img"]["name"]);
+$target_file = $target_dir .$path_parts['filename'].'_'.time().'.'.$path_parts['extension'];
+
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
