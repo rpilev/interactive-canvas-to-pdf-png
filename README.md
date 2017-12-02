@@ -16,7 +16,7 @@ An interactive canvas.
 
 Upload the files to a server running PHP 5 >= 5.5.0, PHP 7
 
-Import databuse sructure via phpMyAdmin from the /sql_db_structure subfolder
+Import databuse structure via phpMyAdmin from the /sql_db_structure subfolder
 
 Configurate database.php with relevant database information
 
