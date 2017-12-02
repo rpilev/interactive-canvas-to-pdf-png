@@ -10,6 +10,7 @@ function ImageCanvasView(canvas_list_target, canvas_id, img_src, text_value, tex
   this.canvas_text_font = text_font_size + 'px Arial';
   this.baseHeight = 280;
   this.baseWidth = 370;
+  this.canvas = undefined;
 
   this.init = function() {
     this.setUpCanvas();
@@ -17,13 +18,39 @@ function ImageCanvasView(canvas_list_target, canvas_id, img_src, text_value, tex
   }
 
   this.bindDownloadLinks = function () {
+
+    //original image
     var original_img_link = document.getElementById('canvas-container-'+this.canvas_id).getElementsByClassName('download-original')[0];
     original_img_link.href = this.img_src;
     original_img_link.download = this.img_src;
 
+    //png image
     var png_img_link = document.getElementById('canvas-container-'+this.canvas_id).getElementsByClassName('download-png')[0];
-    png_img_link.href = document.getElementById('canvas-'+this.canvas_id).toDataURL();
+    png_img_link.href = this.canvas.toDataURL();
     png_img_link.download = 'png-canvas-'+this.canvas_id;
+
+    //pdf image
+
+    document.getElementById('canvas-container-'+this.canvas_id).getElementsByClassName('download-pdf')[0].addEventListener('click', function() {
+
+      var jpeg_img_data = this.canvas.toDataURL("image/jpeg", 1.0);
+
+      var computed_mm = parseInt(getComputedStyle(document.getElementById('my_mm')).getPropertyValue("height"))
+
+      var width = Math.floor(this.img.width / computed_mm);
+      var height = Math.floor(this.img.height / computed_mm);
+
+      console.log(width, height);
+
+      if(width < height) {
+        var pdf = new jsPDF("p", "mm", [width, height]);
+      } else {
+        var pdf = new jsPDF("l", "mm", [width, height]);
+      }
+
+      pdf.addImage(jpeg_img_data, 'JPEG', 0, 0, width, height);
+      pdf.save('pdf-canvas-'+this.canvas_id);
+    }.bind(this));
 
   }
 
@@ -66,7 +93,7 @@ function ImageCanvasView(canvas_list_target, canvas_id, img_src, text_value, tex
 
     var download_pdf = document.createElement("button");
     download_pdf.innerHTML = 'PDF';
-    download_pdf.className = 'btn btn-danger';
+    download_pdf.className = 'btn btn-danger download-pdf';
 
     var canvas = document.createElement("canvas");
     canvas.id = 'canvas-'+this.canvas_id;
