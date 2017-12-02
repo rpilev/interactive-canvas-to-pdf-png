@@ -1,0 +1,32 @@
+.main {
+  padding: 20px;
+  max-width: 500px !important;
+  text-align: center;
+}
+
+.main canvas {
+  border:1px solid lightgray;
+}
+
+.main-list {
+  padding: 20px;
+  text-align: center;
+}
+
+.canvas-container {
+  padding: 10px;
+  display: inline-block;
+}
+
+.main-list .canvas-container button {
+  margin: 5px;
+}
+
+.main-list canvas {
+  display: block !important;
+  margin: 0 auto 10px auto;
+}
+
+#size-input {
+  width: 60px;
+}
