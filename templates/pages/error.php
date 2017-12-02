@@ -1,1 +1,1 @@
-<h4 class="center-heading">Tekkis viga pildi laadimisel. Võimalik, et sama nimega pilt on juba olemas</h3>
+<h4 class="center-heading">Tekkis viga pildi laadimisel. Võimalik, et pildi fail ületab maksimaalse suuruse.</h3>

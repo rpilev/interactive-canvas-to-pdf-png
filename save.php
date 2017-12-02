@@ -4,7 +4,7 @@ include_once('./database.php');
 
 $target_dir = "img/";
 $path_parts = pathinfo($_FILES["img"]["name"]);
-$target_file = $target_dir .$path_parts['filename'].'_'.time().'.'.$path_parts['extension'];
+$target_file = $target_dir . $path_parts['filename'].'_'.time().'.'.$path_parts['extension'];
 
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -49,11 +49,9 @@ if ($uploadOk == 0) {
 }
 
 
-$file = $target_dir . $_FILES["img"]["name"];
-
 $stmt = $conn->prepare("INSERT INTO canvas_img (`text_value`, `textX`, `textY`, `canvas_text_size`, `img_file`) VALUES (?, ?, ?, ?, ?)");
 
-$stmt->bind_param('sddds', $_POST['canvas-textValue'], $_POST['canvas-textX'], $_POST['canvas-textY'], $_POST['canvas-canvas_text_size'], $file);
+$stmt->bind_param('sddds', $_POST['canvas-textValue'], $_POST['canvas-textX'], $_POST['canvas-textY'], $_POST['canvas-canvas_text_size'], $target_file);
 
 /* execute prepared statement */
 $stmt->execute();
