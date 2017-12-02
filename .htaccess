@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine On
+ 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteBase /
+
+RewriteRule logout logout.php
+RewriteRule loginpageerror index.php?page=loginpage&error=1
+RewriteRule ^([^\.]+)$ index.php?page=$1

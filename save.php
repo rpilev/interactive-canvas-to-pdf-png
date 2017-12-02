@@ -13,24 +13,24 @@ if(isset($_POST["submit"])) {
         echo "Fail on pilt - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=invalid' />";
+        echo "<meta http-equiv='refresh' content='0; url=error' />";
         $uploadOk = 0;
     }
 }
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=same' />";
+    echo "<meta http-equiv='refresh' content='0; url=error' />";
     $uploadOk = 0;
 }
 // Check file size
 if ($_FILES["img"]["size"] > 5000000) {
-    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=size' />";
+    echo "<meta http-equiv='refresh' content='0; url=error' />";
     $uploadOk = 0;
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=invalid' />";
+    echo "<meta http-equiv='refresh' content='0; url=error' />";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -39,9 +39,9 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-        echo "<meta http-equiv='refresh' content='0; url=index.php?page=success' />";
+        echo "<meta http-equiv='refresh' content='0; url=success' />";
     } else {
-        echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=general' />";
+        echo "<meta http-equiv='refresh' content='0; url=error' />";
         die();
     }
 }

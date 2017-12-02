@@ -26,10 +26,17 @@ session_start();
         if(!isset($_GET['page']) || $_GET['page'] == 'mainpage') {
           include_once('./templates/pages/mainpage.php');
         } elseif (isset($_GET['page'])) {
-          include_once('./templates/pages/'.$_GET["page"].'.php');
+          if(file_exists('./templates/pages/'.$_GET["page"].'.php')){
+            include_once('./templates/pages/'.$_GET["page"].'.php');
+          }
+          else {
+            ?>
+            <h2 class="center-heading">Sellist lehte ei eksisteeri.</h2>
+            <?php
+          }
         } else {
           ?>
-          <h2>Tekkis viga!</h2>
+          <h2 class="center-heading">Tekkis viga!</h2>
           <?php
         }
       ?>

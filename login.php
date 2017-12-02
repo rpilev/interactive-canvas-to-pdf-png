@@ -24,16 +24,16 @@ if (empty($_POST['username']) || empty($_POST['password'])) {
 
 
   if(!$db_password) {
-    echo '<meta http-equiv="refresh" content="0; url=index.php?page=loginpage&error=1" />';
+    echo '<meta http-equiv="refresh" content="0; url=loginpageerror" />';
     die();
   }
 
   //check the hash
   if(password_verify($password, $db_password)) {
     $_SESSION['user_id'] = $ID;
-    echo '<meta http-equiv="refresh" content="0; url=index.php?page=list" />';
+    echo '<meta http-equiv="refresh" content="0; url=list" />';
   } else {
-    echo '<meta http-equiv="refresh" content="0; url=index.php?page=loginpage&error=1" />';
+    echo '<meta http-equiv="refresh" content="0; url=loginpageerror" />';
   }
 
   $stmt->close();
