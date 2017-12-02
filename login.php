@@ -24,28 +24,19 @@ if (empty($_POST['username']) || empty($_POST['password'])) {
 
 
   if(!$db_password) {
-    echo '<meta http-equiv="refresh" content="0; url=login_page.php?error=1" />';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?page=loginpage&error=1" />';
     die();
   }
 
   //check the hash
   if(password_verify($password, $db_password)) {
     $_SESSION['user_id'] = $ID;
-    echo '<meta http-equiv="refresh" content="0; url=list.php" />';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?page=list" />';
   } else {
-    echo '<meta http-equiv="refresh" content="0; url=login_page.php?error=1" />';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?page=loginpage&error=1" />';
   }
 
   $stmt->close();
 }
-/*
-  $rows = mysql_num_rows($query);
-  if ($rows == 1) {
-  $_SESSION['login_user']=$username; // Initializing Session
-  header("location: profile.php"); // Redirecting To Other Page
-  } else {
-  $error = "Username or Password is invalid";
-  }
-  mysql_close($connection); // Closing Connection
-  }*/
+
 ?>

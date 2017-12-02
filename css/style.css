@@ -30,3 +30,18 @@
 #size-input {
   width: 60px;
 }
+
+.container-center {
+  text-align: center;
+}
+
+.login-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.center-heading {
+  text-align: center;
+  padding: 25px;
+}

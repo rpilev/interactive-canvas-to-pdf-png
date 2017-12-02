@@ -39,7 +39,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-        echo "<meta http-equiv='refresh' content='0; url=success.php' />";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?page=success' />";
     } else {
         echo "Tekkis viga.";
         die();

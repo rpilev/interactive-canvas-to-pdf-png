@@ -13,54 +13,45 @@ session_start();
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./imports/jqueryUI/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="./imports/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./imports/font-awesome/css/font-awesome.min.css">
   </head>
   <body>
 
-    <nav class="navbar navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Canvas - PDF / PNG</a>
+    <?php
+      include_once('./templates/layout/navbar.php');
+    ?>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="login_page.php"><?php echo !isset($_SESSION['user_id']) ? 'Logi sisse' : 'Adminni ala' ?></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="container main">
-      <form class="image-canvas-form" method="POST" action="./save.php" enctype="multipart/form-data">
-        <div class="form-group">
-          <label>Lisa pilt</label>
-          <input class="form-control" name="img" type="file" id="img-loader">
-        </div>
-        <div class="form-group">
-          <canvas id="img-canvas"></canvas>
-        </div>
-        <div class="form-group">
-          <label>Lisa teksti ja muuda asukohta hiirega ringi tirides</label>
-          <input type="text" class="form-control" id="text-input">
-        </div>
-        <div class="form-group">
-          <label>Teksti suurus</label>
-          <input type="number" id="size-input" value="50">
-        </div>
-        <input type="hidden" name="canvas-textValue" value="">
-        <input type="hidden" name="canvas-textX" value="">
-        <input type="hidden" name="canvas-textY" value="">
-        <input type="hidden" name="canvas-canvas_text_size" value="">
-        <input type="submit" class="btn btn-primary" name="" value="Salvesta">
-      </form>
+    <div class="container <?php echo (!isset($_GET['page']) || $_GET['page'] == 'mainpage') ? 'main' : '' ?>">
+      <?php
+        if(!isset($_GET['page']) || $_GET['page'] == 'mainpage') {
+          include_once('./templates/pages/mainpage.php');
+        } elseif (isset($_GET['page'])) {
+          include_once('./templates/pages/'.$_GET["page"].'.php');
+        } else {
+          ?>
+          <h2>Tekkis viga!</h2>
+          <?php
+        }
+      ?>
       
     </div>
 
     <script type="text/javascript" src="./imports/tether/tether.min.js"></script>
     <script type="text/javascript" src="./imports/jquery/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./js/image_canvas.js"></script>
-    <script type="text/javascript" src="./js/script.js"></script>
+    <?php
+    if(!isset($_GET['page']) || $_GET['page'] == 'mainpage') {
+      ?>
+      <script type="text/javascript" src="./js/script.js"></script>
+      <script type="text/javascript" src="./js/image_canvas.js"></script>
+      <?php
+    }
+    if(isset($_GET['page']) && $_GET['page'] == 'list') {
+      ?>
+      <script type="text/javascript" src="./js/image_canvas_view.js"></script>
+      <script type="text/javascript" src="./imports/jspdf/jspdf.debug.js"></script>
+      <?php
+    }
+    ?>
     <script type="text/javascript" src="./imports/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./imports/jqueryUI/jquery-ui.min.js"></script>
   </body>
