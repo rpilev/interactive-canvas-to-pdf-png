@@ -13,24 +13,24 @@ if(isset($_POST["submit"])) {
         echo "Fail on pilt - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "Ainult pildi failid on lubatud.";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=invalid' />";
         $uploadOk = 0;
     }
 }
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sama nimega pilt on juba olemas.";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=same' />";
     $uploadOk = 0;
 }
 // Check file size
 if ($_FILES["img"]["size"] > 5000000) {
-    echo "Pildi fail on liiga suur.";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=size' />";
     $uploadOk = 0;
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-    echo "Pildid võivad ainult olla JPG, JPEG, PNG & GIF formaatides.";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=invalid' />";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -41,7 +41,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         echo "<meta http-equiv='refresh' content='0; url=index.php?page=success' />";
     } else {
-        echo "Tekkis viga.";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?page=error&type=general' />";
         die();
     }
 }

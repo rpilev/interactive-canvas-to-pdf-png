@@ -45,3 +45,18 @@
   text-align: center;
   padding: 25px;
 }
+
+@media (max-width: 400px) {
+  canvas {
+    max-width: 280px;
+  }
+  .container.main-list {
+    padding: 0;
+  }
+  .container {
+    padding: 0 !important;
+  }
+  .canvas-container {
+    padding: 0;
+  }
+}
