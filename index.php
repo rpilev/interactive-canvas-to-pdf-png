@@ -43,23 +43,23 @@ session_start();
       
     </div>
 
-    <script type="text/javascript" src="./imports/tether/tether.min.js"></script>
-    <script type="text/javascript" src="./imports/jquery/jquery-3.2.1.min.js"></script>
+    <script src="./imports/tether/tether.min.js"></script>
+    <script src="./imports/jquery/jquery-3.2.1.min.js"></script>
     <?php
     if(!isset($_GET['page']) || $_GET['page'] == 'mainpage') {
       ?>
-      <script type="text/javascript" src="./js/script.js"></script>
-      <script type="text/javascript" src="./js/image_canvas.js"></script>
+      <script src="./js/script.js"></script>
+      <script src="./js/image_canvas.js"></script>
       <?php
     }
     if(isset($_GET['page']) && $_GET['page'] == 'list') {
       ?>
-      <script type="text/javascript" src="./js/image_canvas_view.js"></script>
-      <script type="text/javascript" src="./imports/jspdf/jspdf.debug.js"></script>
+      <script src="./js/image_canvas_view.js"></script>
+      <script src="./imports/jspdf/jspdf.debug.js"></script>
       <?php
     }
     ?>
-    <script type="text/javascript" src="./imports/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./imports/jqueryUI/jquery-ui.min.js"></script>
+    <script src="./imports/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./imports/jqueryUI/jquery-ui.min.js"></script>
   </body>
 </html>

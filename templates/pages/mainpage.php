@@ -18,5 +18,5 @@
   <input type="hidden" name="canvas-textX" value="">
   <input type="hidden" name="canvas-textY" value="">
   <input type="hidden" name="canvas-canvas_text_size" value="">
-  <input type="submit" class="btn btn-primary" name="" value="Salvesta">
+  <input type="submit" class="btn btn-primary" name="save" value="Salvesta">
 </form>

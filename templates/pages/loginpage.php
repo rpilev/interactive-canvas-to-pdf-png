@@ -1,5 +1,5 @@
 <div class="container-center">
-  <form class="form-horizontal login-form" role="form" method="POST" action="login.php">
+  <form class="form-horizontal login-form" method="POST" action="login.php">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
