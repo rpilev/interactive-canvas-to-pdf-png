@@ -26,7 +26,7 @@ function ImageCanvasView(canvas_list_target, canvas_id, img_src, text_value, tex
 
     //png image
     var png_img_link = document.getElementById('canvas-container-'+this.canvas_id).getElementsByClassName('download-png')[0];
-    png_img_link.href = this.canvas.toDataURL();
+    png_img_link.href = this.canvas.toDataURL("image/png");
     png_img_link.download = 'png-canvas-'+this.canvas_id;
 
     //pdf image

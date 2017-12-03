@@ -82,6 +82,14 @@ function ImageCanvas(target_canvas, target_img_input, target_text_input, target_
       this.draw(this.textX, this.textY);
     }.bind(this));
 
+    this.canvas.addEventListener('click', function (e) {
+      var bounds = this.canvas.getBoundingClientRect();
+      this.textX = Math.floor(e.clientX - bounds.left);
+      this.textY = Math.floor(e.clientY - bounds.top);
+
+      this.draw(this.textX, this.textY);
+    }.bind(this));
+
     this.canvas.addEventListener('mouseup', function () {
       this.dragging = false;
     }.bind(this));

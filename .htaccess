@@ -4,7 +4,7 @@ RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-RewriteBase /infovorgud
+RewriteBase /
 
 RewriteRule logout logout.php
 RewriteRule loginpageerror index.php?page=loginpage&error=1
